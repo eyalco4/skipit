@@ -64,3 +64,14 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# IDE files #
+../.idea/vcs.xml
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.eslintcache
+.idea

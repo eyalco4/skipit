@@ -2,31 +2,45 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
+    "server-dev": "NODE_ENV=development nodemon -e js,json --inspect --watch server server/index.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve": "firebase emulators:start --only functions",
+    "lint": "eslint --cache --fix",
     "shell": "firebase functions:shell",
+    "preserve": "npm run build",
+    "serve": "firebase emulators:start --only functions",
+    "predeploy": "rimraf .next/ && npm run build",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "16"
+    "node": "12"
   },
-  "main": "index.js",
+  "main": "server/index.js",
   "dependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/register": "^7.17.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "firebase-admin": "^9.8.0",
     "firebase-functions": "^3.14.1",
-    "next": "^12.0.10",
+    "next": "^12.0.7",
+    "next-compose-plugins": "^2.2.1",
+    "next-transpile-modules": "^9.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-jsx-plugin-postcss": "^4.0.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.0.10",
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",
-    "firebase-functions-test": "^0.2.0"
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-react": "^7.28.0",
+    "firebase-functions-test": "^0.2.0",
+    "nodemon": "^2.0.15"
   },
   "private": true
 }
